@@ -5,8 +5,6 @@
 	<title>DepthKit - Simple example using Three.js</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-	<!-- Origin Trial Token, feature = WebVR (For Chrome M59+), origin = https://juniorxsound.github.io, expires = 2017-08-16 -->
-	<meta http-equiv="origin-trial" data-feature="WebVR (For Chrome M59+)" data-expires="2017-08-16" content="Ahwo2B0LoM2bLB015eLJ4CAvJa0xF9VVn0FO1/AaYfPklvBUwcfYFkXKenD57vhGo1WQt9Hg9IFauhKdRgLN8w8AAABreyJvcmlnaW4iOiJodHRwczovL2p1bmlvcnhzb3VuZC5naXRodWIuaW86NDQzIiwiZmVhdHVyZSI6IldlYlZSMS4xIiwiZXhwaXJ5IjoxNTAyOTEyNTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZX0=">
 	<style>
 		body {
 			background: #000;
@@ -27,11 +25,6 @@
 			position: absolute;
 			width: 100%;
 		}
-		#depthkit-video{
-			position:absolute;
-			top: 0; left: 0;
-			width: 20%;
-		}
 	</style>
 </head>
 
@@ -43,23 +36,14 @@
 		Click page to start playback
 	</div>
 
-	<!-- Import maps polyfill -->
-	<!-- Remove this when import maps will be widely supported -->
-	<script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
-	<script type="importmap">
-		{
-			"imports": {
-				"three": "https://unpkg.com/three@0.147.0/build/three.module.js",
-				"three/": "https://unpkg.com/three@0.147.0/"
-			}
-		}
-	</script>
-
 	<script type="module">
 		import * as THREE from 'three'
 		import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-		import { DepthKit } from '../src/depthkit.js'
-		// import { DepthKit } from 'https://cdn.jsdelivr.net/gh/remmel/Depthkit.js/src/depthkit.js'
+		import { VRButton } from 'three/examples/jsm/webxr/VRButton.js'
+		import {DepthKit} from "./src/depthkit.js";
+		// import {DepthKit} from "./dist/dephkit.js"
+		// import { DepthKit } from 'https://cdn.jsdelivr.net/gh/remmel/Depthkit.js/dist/depthkit.js'
+
 
 		//Some general Three.js components
 		var renderer,
@@ -78,7 +62,9 @@
 			renderer = new THREE.WebGLRenderer();
 			renderer.setPixelRatio( window.devicePixelRatio );
 			renderer.setSize( window.innerWidth, window.innerHeight );
+			renderer.xr.enabled = true;
 			document.body.appendChild( renderer.domElement );
+			document.body.appendChild(VRButton.createButton(renderer));
 
 			// Setup scene
 			scene = new THREE.Scene();

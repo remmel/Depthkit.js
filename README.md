@@ -78,9 +78,14 @@ Calling ```new DepthKit()``` returns a three.js Object3D which has all the regul
 
 ## How to contribute:
 1. Fork/Clone/Download
-1. Install all dependencies using `npm install`
-1. Start http server : `npm run start`  
-1. Open http://localhost:8080/examples/simple.html
+1. Install all dependencies using : `npm install`
+1. Start http server : `npm run dev`  
+1. Open http://localhost:5173/
+1. To build merged esm and umd file : `npm run build`
+
+## TODO
+
+How to add an es6 (using CDN or not) example with vite? (`npm run preview`) Avoiding copying the almost same index.html ? Not automatically generated?
 
 ## Thanks
 Originally written by [@mrdoob](https://github.com/mrdoob) and [@obviousjim](https://github.com/obviousjim) ported and modified by [@juniorxsound](https://github.com/juniorxsound) and [@avnerus](https://github.com/Avnerus). Special thank you to [Shirin Anlen](https://github.com/ShirinStar) and all the Tzina crew, [@ZEEEVE](https://github.com/zivschneider), [@jhclaura](https://github.com/jhclaura)

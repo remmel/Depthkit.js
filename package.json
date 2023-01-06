@@ -2,10 +2,20 @@
   "name": "depthkit",
   "version": "1.0.0",
   "description": "A plugin for rendering DepthKit volumetric videos using Three.js",
-  "main": "src/depthkit.js",
   "type": "module",
+  "files": ["dist"],
+  "main": "./dist/dephkit.umd.cjs",
+  "module": "./dist/dephkit.js",
+  "exports": {
+    ".": {
+      "import": "./dist/dephkit.js",
+      "require": "./dist/dephkit.umd.cjs"
+    }
+  },
   "scripts": {
-    "start": "http-server -s --cors"
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview --host"
   },
   "repository": {
     "type": "git",
@@ -24,6 +34,7 @@
     "three": "*"
   },
   "devDependencies": {
-    "http-server": "^0.10.0"
+    "three": "^0.148.0",
+    "vite": "^4.0.0"
   }
 }
